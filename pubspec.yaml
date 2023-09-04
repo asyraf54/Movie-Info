@@ -43,6 +43,7 @@ dependencies:
   flutter_bloc: ^8.0.0
   envied: ^0.3.0+3
   alice: ^0.3.3
+  equatable: ^2.0.5
 
 
 
@@ -59,6 +60,7 @@ dev_dependencies:
   git_hooks: ^1.0.1
   envied_generator: ^0.3.0+3
   build_runner: ^2.4.6
+  mockito: ^5.4.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

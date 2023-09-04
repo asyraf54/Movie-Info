@@ -9,16 +9,26 @@ part 'movie_list_state.dart';
 
 class MovieListCubit extends Cubit<MovieListState> {
   MovieListCubit() : super(MovieListInitial());
-  final ApiService _apiService = ApiService();
+  final ApiService apiService = ApiService();
+  int page = 1;
 
   Future<void> getMovie() async {
-    emit(MovieListLoading());
-    try {
-      final moviesTopRated = await _apiService.getMovie(MovieCategory.topRated);
-      final moviesUpcoming = await _apiService.getMovie(MovieCategory.upcoming);
-      emit(MovieListLoaded(moviesTopRated: moviesTopRated,moviesUpcoming: moviesUpcoming));
-    } catch (error) {
-      emit(MovieListError(error: 'Failed to fetch data'));
+    if (state is MovieListLoading) return;
+    final currentState = state;
+
+    var oldMovies = <Movie>[];
+    if (currentState is MovieListLoaded) {
+      oldMovies = currentState.movies;
     }
+
+    emit(MovieListLoading(oldMovies, isFirstFetch: page == 1));
+    apiService.getMovie(MovieCategory.topRated, page, "en-US").then((newMovies) {
+      page++;
+
+      final movies = (state as MovieListLoading).oldMovies;
+      movies.addAll(newMovies);
+
+      emit(MovieListLoaded( movies: movies));
+    });
   }
 }

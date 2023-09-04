@@ -1,4 +1,6 @@
 {
   "appTitle": "Movie Info",
-  "detailTitle": "Movie Detail"
+  "detailTitle": "Movie Detail",
+  "topRatedTitle": "Top Rated Movie",
+  "upcomingTitle": "Upcoming Movie"
 }

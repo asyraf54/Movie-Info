@@ -12,10 +12,11 @@ void main(List<String> arguments) {
 
 Future<bool> commitMsg() async {
   String commitMessage = Utils.getCommitEditMsg();
-  bool isValid = await RegExp(
+  bool isValid =  RegExp(
             r"((version):[0-9]+[.][0-9]+[.][0-9]+\s(message):[a-zA-Z0-9\s. - ""]+)")
         .hasMatch(commitMessage);
   if(!isValid){
+    // ignore: avoid_print
     print('Correct commit format: "version:x.x.x message:xxxxx"');
   }
   return isValid;

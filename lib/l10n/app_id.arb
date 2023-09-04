@@ -1,4 +1,6 @@
 {
   "appTitle": "Info Film",
-  "detailTitle": "Detail Film"
+  "detailTitle": "Detail Film",
+  "topRatedTitle": "Film dengan Rating Tertinggi",
+  "upcomingTitle": "Film yang Akan Datang"
 }

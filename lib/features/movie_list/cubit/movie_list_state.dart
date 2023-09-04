@@ -1,16 +1,19 @@
 part of 'movie_list_cubit.dart';
 
 @immutable
-sealed class MovieListState {}
+abstract class MovieListState {}
 
 final class MovieListInitial extends MovieListState {}
 
-class MovieListLoading extends MovieListState {}
+class MovieListLoading extends MovieListState {
+  final List<Movie> oldMovies;
+  final bool isFirstFetch;
+  MovieListLoading(this.oldMovies, {this.isFirstFetch = false});
+}
 
 class MovieListLoaded extends MovieListState {
-  final List<Movie> moviesTopRated;
-  final List<Movie> moviesUpcoming;
-  MovieListLoaded({required this.moviesTopRated, required this.moviesUpcoming});
+  final List<Movie> movies;
+  MovieListLoaded({required this.movies});
 }
 
 class MovieListError extends MovieListState {

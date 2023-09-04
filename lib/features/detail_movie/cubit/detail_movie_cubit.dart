@@ -10,7 +10,7 @@ class DetailMovieCubit extends Cubit<DetailMovieState> {
   Future<void> getDetailMovie(int movieId) async {
     emit(DetailMovieLoading());
     try {
-      final data = await _apiService.getDetailMovie(movieId);
+      final data = await _apiService.getDetailMovie(movieId, "en-US");
       emit(DetailMovieLoaded(data: data));
     } catch (error) {
       emit(DetailMovieError(error: 'Failed to fetch data'));
